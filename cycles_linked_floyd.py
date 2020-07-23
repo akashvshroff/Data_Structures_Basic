@@ -114,10 +114,10 @@ def main():
     """
     llist = LinkedList()
 
-    for i in range(1, 10):
+    for i in range(1, 20):
         llist.append_end(i)
 
-    llist.create_cycle(5)  # Adding a cycle to node at index 4.
+    llist.create_cycle(15)  # Adding a cycle to node at index 4.
     llist.has_cycle()
 
 
