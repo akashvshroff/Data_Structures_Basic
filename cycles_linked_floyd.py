@@ -47,7 +47,7 @@ class LinkedList:
             if cur_ind == index:
                 cycle_node = cur  # gets the node that is to be added
             cur = cur.next
-            cur_index += 1
+            cur_ind += 1
         cur.next = cycle_node  # adds the node to the last one
 
     def has_cycle(self):
@@ -64,3 +64,21 @@ class LinkedList:
             fast = fast.next.next
             slow = slow.next
         return False
+
+
+def main():
+    """
+    Debugging of the linkedlist class and algorithm.
+    """
+    llist = LinkedList()
+
+    for i in range(1, 10):
+        llist.append(i)
+
+    print(llist.has_cycle())
+    llist.create_cycle(4)
+    print(llist.has_cycle())
+
+
+if __name__ == '__main__':
+    main()
