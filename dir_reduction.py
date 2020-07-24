@@ -13,3 +13,27 @@ def directions_reduction(dirs: list) -> list:
     See also:
     https://www.codewars.com/kata/550f22f4d758534c1100025a
     """
+    DIR_LIST = {
+        'NORTH': 'SOUTH',
+        'SOUTH': 'NORTH',
+        'EAST': 'WEST',
+        'WEST': 'EAST'
+    }
+    if not dirs:
+        return []
+    final_dirs = [dirs[0]]  # this question can be easily solved with a stack.
+    for dir in dirs[1:]:
+        if final_dirs and dir == DIR_LIST[final_dirs[-1]]:
+            final_dirs.pop()
+        else:
+            final_dirs.append(dir)
+    return final_dirs
+
+
+def main():
+    dirs = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
+    print(directions_reduction(dirs))
+
+
+if __name__ == '__main__':
+    main()
