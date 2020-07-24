@@ -34,3 +34,20 @@ class Queue2Stacks:
         """
         self.shift_stacks()
         return self.stack2.pop()
+
+
+def main():
+    """
+    Used to debug the class.
+    """
+    queue = Queue2Stacks()
+    for i in range(8):
+        queue.enqueue(i)  # Queue from newest to oldest is 7,6,5,4,3,2,1,0
+    print(queue.peek())  # ->0
+    for i in range(3):
+        queue.dequeue()  # now queue is 7,6,5,4,3
+    print(queue.peek())  # -> 3
+
+
+if __name__ == '__main__':
+    main()
