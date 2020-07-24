@@ -14,6 +14,24 @@ class Stack:
         """
         self.top = None
 
+    def peek(self):
+        """
+        Returns value at the top of the stack.
+        """
+        pass
+
+    def push(self):
+        """
+        Adds a value to the stack.
+        """
+        pass
+
+    def pop(self):
+        """
+        Removes the top most value to the stack
+        """
+        pass
+
 
 class Queue:
     def __init__(self):
@@ -36,7 +54,7 @@ class Queue:
         """
         if self.head is not None:
             print(head.data)
-            return
+            return head.data
         print("Error: Empty Queue.")
 
     def add(self, data):
