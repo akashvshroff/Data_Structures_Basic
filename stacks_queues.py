@@ -18,19 +18,31 @@ class Stack:
         """
         Returns value at the top of the stack.
         """
-        pass
+        if self.top is not None:
+            data = self.top.data
+            print(data)
+            return data
+        print("Error: Empty Stack.")
 
-    def push(self):
+    def push(self, data):
         """
         Adds a value to the stack.
         """
-        pass
+        new = Node(data)
+        if self.top is not None:
+            new.next = self.top
+        self.top = new
 
     def pop(self):
         """
         Removes the top most value to the stack
         """
-        pass
+        if self.top is not None:
+            data = self.top.data
+            print(data)
+            self.top = self.top.next
+            return data
+        print("Error: Empty Stack.")
 
 
 class Queue:
