@@ -39,7 +39,6 @@ class Stack:
         """
         if self.top is not None:
             data = self.top.data
-            print(data)
             self.top = self.top.next
             return data
         print("Error: Empty Stack.")
@@ -65,8 +64,8 @@ class Queue:
         Returns value at the head of the queue
         """
         if self.head is not None:
-            print(head.data)
-            return head.data
+            print(self.head.data)
+            return self.head.data
         print("Error: Empty Queue.")
 
     def add(self, data):
@@ -94,3 +93,25 @@ class Queue:
         if self.head is None:  # Now the queue is empty
             self.tail = None
         return data if data is not None else None
+
+
+def main():
+    """
+    Used to debug the queue and stack.
+    """
+    queue = Queue()
+    stack = Stack()
+    for i in range(10):
+        queue.add(i)
+        stack.push(i)
+    queue.peek()
+    stack.peek()
+    for k in range(5):
+        queue.remove()
+        stack.pop()
+    queue.peek()
+    stack.peek()
+
+
+if __name__ == "__main__":
+    main()
