@@ -7,8 +7,16 @@ class Node:
         self.next = None
 
 
+class Stack:
+    def __init__(self):
+        """
+        Empty stack with a top of None type.
+        """
+        self.top = None
+
+
 class Queue:
-    def __init__(self, data=None):
+    def __init__(self):
         """
         Initialises an empty queue.
         """
