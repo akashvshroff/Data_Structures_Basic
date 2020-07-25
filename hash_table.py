@@ -26,12 +26,12 @@ class HashTable:
         found = False
         ind = self.get_hash(key)  # index for key
         for idx, element in enumerate(self.hash_arr[ind]):
-            if element[0] == key and len(element) == = 2:
+            if element[0] == key and len(element) == 2:
                 self.hash_arr[ind][idx] = (key, val)
                 found = True
                 break
         if not found:
-            self.hash_arr[h].append((key, val))
+            self.hash_arr[ind].append((key, val))
 
     def __getitem__(self, key):
         """
@@ -60,6 +60,16 @@ def main():
     Controls hashtable through an object.
     """
     hash = HashTable()
+    hash['foo'] = 25
+    hash['fii'] = 65
+    hash['bar'] = 80
+    hash['boo'] = 38
+    hash['bam'] = 89
+
+    print(hash['bam'])
+    del hash['bam']
+    print(hash['foo'])
+    print(hash['bam'])
 
 
 if __name__ == '__main__':
