@@ -12,6 +12,8 @@ class FindDuplicate:
         self.arr = arr
         ans1 = self.floyd_llist()
         print(f"Floyd's Algorithm: {ans1}")
+        ans2 = self.hash_solve()
+        print(f"Hash map: {ans2}")
 
     def floyd_llist(self):
         """
@@ -29,6 +31,18 @@ class FindDuplicate:
         while p1 != p2:
             p1, p2 = nums[p1], nums[p2]
         return p1
+
+    def hash_solve(self):
+        """
+        Maintain a hash map of all the nums we have seen and then if we see
+        a num twice then return it.
+        """
+        nums = self.arr
+        seen = {}
+        for num in nums:
+            if num in seen:
+                return num
+            seen[num] = True
 
 
 def main():
