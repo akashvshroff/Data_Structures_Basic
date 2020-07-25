@@ -32,9 +32,20 @@ class HashTable:
         ind = self.get_hash(key)
         return self.hash_arr[ind]
 
+    def __delitem__(self, key):
+        """
+        Deletes an item at a particular key.
+        """
+        ind = self.get_hash(key)
+        self.hash_arr[ind] = None
+
 
 def main():
     """
     Controls hashtable through an object.
     """
     hash = HashTable()
+
+
+if __name__ == '__main__':
+    main()
