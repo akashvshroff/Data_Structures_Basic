@@ -18,14 +18,14 @@ class HashTable:
             s += ord(char)
         return s % 100
 
-    def add(self, key, val):
+    def __setitem__(self, key, val):
         """
         Accepts a key value pair to add into the hashmap.
         """
         ind = self.get_hash(key)  # index for key
         self.hash_arr[ind] = val  # stores value - to add, collision handling.
 
-    def get(self, key):
+    def __getitem__(self, key):
         """
         Retrieves a value based on key.
         """
