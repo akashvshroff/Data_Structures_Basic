@@ -5,7 +5,7 @@ class HashTable:
         array that is going to be used to store values for the hash table.
         """
         self.MAX = 100
-        self.hash_arr = [None for _ in range(self.MAX)]
+        self.hash_arr = [[] for _ in range(self.MAX)]
 
     def get_hash(self, key):
         """
@@ -20,24 +20,39 @@ class HashTable:
 
     def __setitem__(self, key, val):
         """
-        Accepts a key value pair to add into the hashmap.
+        Accepts a key value pair to add into the hashmap. If exists, then the
+        value is updated, otherwise appended to the end of the list.
         """
+        found = False
         ind = self.get_hash(key)  # index for key
-        self.hash_arr[ind] = val  # stores value - to add, collision handling.
+        for idx, element in enumerate(self.hash_arr[ind]):
+            if element[0] == key and len(element) == = 2:
+                self.hash_arr[ind][idx] = (key, val)
+                found = True
+                break
+        if not found:
+            self.hash_arr[h].append((key, val))
 
     def __getitem__(self, key):
         """
-        Retrieves a value based on key.
+        Retrieves a value based on key, iterates over all possible stored key,
+        values at the index in case of collision.
         """
         ind = self.get_hash(key)
-        return self.hash_arr[ind]
+        arr = self.hash_arr[ind]
+        for k, v in arr:
+            if k == key:
+                return v
 
     def __delitem__(self, key):
         """
         Deletes an item at a particular key.
         """
         ind = self.get_hash(key)
-        self.hash_arr[ind] = None
+        arr = self.hash_arr[ind]
+        for idx, (k, v) in enumerate(arr):
+            if k == key:
+                del self.hash_arr[ind][idx]
 
 
 def main():
