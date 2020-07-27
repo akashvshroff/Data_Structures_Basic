@@ -82,7 +82,34 @@ class BSTNode:
         """
         Deletes a particular node from the binary search tree.
         """
-        pass
+        if value < self.data:
+            if self.left:
+                self.left = self.left.delete(value)
+        elif value > self.data:
+            if self.right:
+                self.right = self.right.delete(value)
+        else:  # value is found
+            if self.left is None and self.right is None:  # only a leaf node.
+                return None
+            if self.left is None:  # parent with one child
+                return self.right
+            if self.right is None:  # parent with one child
+                return self.left
+
+            """
+            One of 2 methods to balance the binary tree after the deletion.
+            """
+            # METHOD 1
+            # min_val = self.right.find_min()
+            # self.data = min_val
+            # self.right = self.right.delete(min_val)
+
+            # METHOD 2
+            max_val = self.left.find_max()
+            self.data = max_val
+            self.left = self.left.delete(max_val)
+
+        return self
 
 
 def main(elems):
@@ -96,6 +123,8 @@ def main(elems):
 
     print(root.in_order_traversal())
     print(root.search(32))
+    root.delete(32)
+    print(root.in_order_traversal())
 
 
 if __name__ == '__main__':
