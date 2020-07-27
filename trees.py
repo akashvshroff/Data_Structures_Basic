@@ -14,6 +14,20 @@ class TreeNode:
         child.parent = self
         self.children.append(child)
 
+    def show_tree(self, level=0):
+        """
+        Display the tree prettily.
+        """
+        indent = ''
+        if level:
+            num = 3*level-1 if level > 1 else 1
+            indent = ' '*num+'|__'
+        print(f'{indent} {self.data}')
+        if not self.children:
+            return
+        for child in self.children:
+            child.show_tree(level=level+1)
+
 
 def main():
     """
@@ -39,6 +53,8 @@ def main():
     root.add_child(mystery)
     root.add_child(horror)
     root.add_child(emotive)
+
+    root.show_tree()
 
 
 if __name__ == "__main__":
