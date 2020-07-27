@@ -62,6 +62,28 @@ class BSTNode:
             else:
                 return False
 
+    def find_max(self):
+        """
+        Finds maximum element in subtree.
+        """
+        if not self.right:
+            return self.data
+        return self.right.find_max()
+
+    def find_min(self):
+        """
+        Finds the minimum value in subtree.
+        """
+        if not self.left:
+            return self.data
+        return self.left.find_min()
+
+    def delete(self, value):
+        """
+        Deletes a particular node from the binary search tree.
+        """
+        pass
+
 
 def main(elems):
     """
