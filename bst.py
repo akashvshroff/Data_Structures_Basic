@@ -7,6 +7,7 @@ class BSTNode:
         self.data = data
         self.left = None
         self.right = None
+        self.l_bst, self.r_bst = True, True
 
     def add_child(self, data):
         """
@@ -111,6 +112,21 @@ class BSTNode:
 
         return self
 
+    def check_bst(self, min, max):
+        """
+        Checks whether a given tree is a binary search tree by comparing its
+        values to some bounds.
+        """
+        if self is None:
+            return True
+        if not min < self.data < max:
+            return False
+        if self.left:
+            self.l_bst = self.left.check_bst(min, self.data)
+        if self.right:
+            self.r_bst = self.right.check_bst(self.data, max)
+        return self.l_bst and self.r_bst
+
 
 def main(elems):
     """
@@ -125,6 +141,7 @@ def main(elems):
     print(root.search(32))
     root.delete(32)
     print(root.in_order_traversal())
+    print(root.check_bst(float('-inf'), float("inf")))
 
 
 if __name__ == '__main__':
