@@ -19,9 +19,9 @@ def cont_median(nums):
             smallest_max_heap = hq.heappop(min_heap)
             hq.heappush(max_heap, -smallest_max_heap)
         if len(min_heap) == len(max_heap):
-            median = (min_heap[0]-max_heap[0])/2
+            median = (min_heap[0]-max_heap[0])/2  # average but max_heap has -ve
         else:
-            median = min_heap[0]
+            median = min_heap[0]  # since min heap is always equal or larger.
         medians.append(median)
 
     return medians
