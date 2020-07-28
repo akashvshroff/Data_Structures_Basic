@@ -77,6 +77,22 @@ class Trie:
             cur = cur.children[letter]
         cur.is_complete = False
 
+    def show_trie(self, node, level=0, letter=''):
+        """
+        Display the trie prettily.
+        """
+        indent = ''
+        if level > 1:
+            num = 1*level-1
+            indent = ' '*num+'|_'
+        print(f'{indent} {letter}')
+        if not node.children:
+            return
+        for letter, child in node.children.items():
+            level += 1
+            self.show_trie(child, level, letter)
+            level -= 1
+
 
 def main():
     """
@@ -93,7 +109,8 @@ def main():
     print(trie.search('tried'))
     trie.remove('try')
     print(trie.search('try'))
-    print(trie.starts_with('car'))
+    print(trie.starts_with('cot'))
+    trie.show_trie(trie.root)
 
 
 if __name__ == '__main__':
