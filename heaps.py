@@ -69,3 +69,48 @@ class MinHeap:
         """
         Returns the root i.e the min element of the array.
         """
+        assert len(self.heap) > 0, "ERROR: Heap is empty."
+        return self.heap[0]
+
+    def poll(self):
+        """
+        Removes the root i.e the min element from the array.
+        """
+        assert len(self.heap) > 0, "ERROR: Heap is empty."
+        item=self.heap[0]
+        self.heap[0]=self.heap.pop()
+        self.heapify_down()
+        return item
+
+    def add(self, value):
+        """
+        Adds an element to the end of the heap and then fixes the heap.
+        """
+        self.heap.append(value)
+        self.heapify_up()
+
+    def heapify_up(self):
+        """
+        Start with the last element and walk up the heap and swap in case the
+        elements are out of order.
+        """
+        index=len(self.heap) - 1
+        while self.has_parent(index) and self.get_parent(index) > self.heap[index]:
+            self.swap_values(self.get_parent_index(index), index)
+            index=self.get_parent_index(index)
+
+    def heapify_down(self):
+        """
+        Start with the root element and keep walking down and fixing the heap
+        while there are children.
+        """
+        index=0
+        while self.has_left_child(index):
+            smaller_child_index=self.get_left_child_index(index)
+            if self.has_right_child(index) and self.get_right_child(index) < self.get_left_child(index):
+                smaller_child_index=self.get_right_child_index(index)
+            if items[index] < items[smaller_child_index]:
+                break
+            else:
+                self.swap_values(index, smaller_child_index)
+            index=smaller_child_index
