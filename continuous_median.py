@@ -11,17 +11,17 @@ def cont_median(nums):
     if not nums:
         return None
     medians = []
-    lower, upper = [], []
+    min_heap, max_heap = [], []
 
     for num in nums:
-        hq.heappush(lower, num)
-        if len(lower) > len(upper) + 1:
-            smallest_upper = hq.heappop(lower)
-            hq.heappush(upper, -smallest_upper)
-        if len(lower) == len(upper):
-            median = (lower[0]-upper[0])/2
+        hq.heappush(min_heap, num)
+        if len(min_heap) > len(max_heap) + 1:
+            smallest_max_heap = hq.heappop(min_heap)
+            hq.heappush(max_heap, -smallest_max_heap)
+        if len(min_heap) == len(max_heap):
+            median = (min_heap[0]-max_heap[0])/2
         else:
-            median = lower[0]
+            median = min_heap[0]
         medians.append(median)
 
     return medians
