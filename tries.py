@@ -85,7 +85,8 @@ class Trie:
         if level > 1:
             num = 1*level-1
             indent = ' '*num+'|_'
-        print(f'{indent} {letter}')
+        mark = '*' if node.is_complete else ''
+        print(f'{indent} {letter} {mark}')
         if not node.children:
             return
         for letter, child in node.children.items():
