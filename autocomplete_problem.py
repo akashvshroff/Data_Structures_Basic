@@ -48,6 +48,11 @@ class Trie:
         prefix = query
         stack = [(cur, prefix)]
         while stack:
+            """
+            A stack of all the possible words get built in a BFS approach that
+            ultimately pops the word once it is finished. If it isn't finished,
+            the word is appended back onto the stack and the process continues.
+            """
             cur, prefix = stack.pop()
             if cur.is_complete:
                 found.append(prefix)
